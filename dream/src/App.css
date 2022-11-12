@@ -1,0 +1,84 @@
+.App {
+  text-align: center;
+}
+
+.profile {
+  position: relative;
+  width: 300px;
+  text-align: center;
+  padding: 1rem;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  box-shadow: 17px 27px 35px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 17px 27px 35px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 17px 27px 35px 0px rgba(0,0,0,0.75);
+}
+
+.photo{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.new {
+  position: absolute;
+  left: 70%;
+  top: 10%;
+  background-color: aquamarine;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.avatar{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+
+.counter{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  border: 2px solid gold;
+}
+
+.counter:hover{
+  background-color: yellow;
+}
+
+.number {
+  font-size: 7rem;
+}
+
+.button{
+  font-size: 2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: gold;
+  background: linear-gradient(
+    90deg,
+    gold 0%,
+    yellow 100%
+  );
+}
+
+.total {
+  font-size: 1rem;
+  margin-left: -1.5rem;
+}
+
+.banner {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 2rem;
+  background-color: gold;
+  font-weight: bold;
+}
