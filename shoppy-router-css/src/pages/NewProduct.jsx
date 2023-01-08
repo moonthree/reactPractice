@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { addNewProdcut } from "../api/firebase";
 import { uploadImage } from "../api/uploader";
 import Button from "../components/ui/Button";
+import { useMutation, QueryClient } from "@tanstack/react-query";
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [isUploading, setIsUploading] = useState(false);
   const [success, setSuccess] = useState();
+  const addProduct = useMutation(
+    ({ product, url }) => addNewProdcut(product, url),
+    {
+      onSuccess: () => QueryClient.invalidateQueries(["products"]),
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -25,14 +32,18 @@ export default function NewProduct() {
     setIsUploading(true); // 1. 제품 등록 비활성화, 업로드중인 거 보여줌
     uploadImage(file) //
       .then((url) => {
-        addNewProdcut(product, url) //
-          .then(() => {
-            // 제품등록 성공하면 메세지 보여주고 4초 후 초기화
-            setSuccess("성공적으로 제품이 추가되었습니다.");
-            setTimeout(() => {
-              setSuccess(null);
-            }, 4000);
-          });
+        addProduct.mutate(
+          { product, url },
+          {
+            onSuccess: () => {
+              // 제품등록 성공하면 메세지 보여주고 4초 후 초기화
+              setSuccess("성공적으로 제품이 추가되었습니다.");
+              setTimeout(() => {
+                setSuccess(null);
+              }, 4000);
+            },
+          }
+        );
       })
       .finally(() => setIsUploading(false));
   };
