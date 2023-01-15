@@ -4,12 +4,18 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'airbnb', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'prettier',
+    'plugin:prettier/recommended',
+  ],
   rules: {
-    'react/jsx-filename-extension': [
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'prettier/prettier': [
       'error',
       {
-        extensions: ['.js', '.jsx'],
+        endOfLine: 'auto',
       },
     ],
   },
